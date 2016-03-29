@@ -1,6 +1,8 @@
 # Note: The script was tested on c4.large and r3.large. The latest official release by StarCluster does not support
 #       c4.large. However, the bleeding-edge of github (as of 28-March 2016) does support it.
 #
+# This script seems to only work with Ubuntu 15.04 (maybe also newer, but not 14.04).
+#
 # To launch a base Ubuntu 15.04 machine I used:
 #   (FOR COMPUTE OPTIMIZED AMI)
 #   starcluster start -o -s 1 -I c4.large -m ami-20435d41 imagehost
