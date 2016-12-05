@@ -44,9 +44,9 @@ yes | apt-get install libz-dev
 yes | apt-get remove openmpi-bin openmpi-common libopenmpi1.6 libopenmpi-dev
 
 # Install HDF5 (TODO: maybe parallel too?)
-wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.17.tar.gz
-tar zxvf hdf5-1.8.17.tar.gz
-cd hdf5-1.8.17/
+wget https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.18.tar.gz
+tar zxvf hdf5-1.8.18.tar.gz
+cd hdf5-1.8.18/
 ./configure --prefix=/usr/local --enable-cxx
 make -j2
 make install
