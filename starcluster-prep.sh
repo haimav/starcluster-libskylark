@@ -56,6 +56,7 @@ rm -rf hdf5-*
 # easy-install some pacakges
 easy_install mpi4py
 easy_install h5py
+easy_install networkx
 
 # Install Random123
 wget http://www.thesalmons.org/john/random123/releases/1.08/Random123-1.08.tar.gz
