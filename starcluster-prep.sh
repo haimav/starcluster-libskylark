@@ -1,4 +1,9 @@
-# To launch a base Ubunut 15.04 machine I used:
+# Note: The script was tested on c4.large and r3.large. The latest official release by StarCluster does not support
+#       c4.large. However, the bleeding-edge of github (as of 28-March 2016) does support it.
+#
+# This script seems to only work with Ubuntu 15.04 (maybe also newer, but not 14.04).
+#
+# To launch a base Ubuntu 15.04 machine I used:
 #   (FOR COMPUTE OPTIMIZED AMI)
 #   starcluster start -o -s 1 -I c4.large -m ami-20435d41 imagehost
 #   (FOR MEMORY OPTIMIZED AMI)
@@ -39,9 +44,9 @@ yes | apt-get install libz-dev
 yes | apt-get remove openmpi-bin openmpi-common libopenmpi1.6 libopenmpi-dev
 
 # Install HDF5 (TODO: maybe parallel too?)
-wget http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.16.tar.gz
-tar zxvf hdf5-1.8.16.tar.gz
-cd hdf5-1.8.16/
+wget https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.18.tar.gz
+tar zxvf hdf5-1.8.18.tar.gz
+cd hdf5-1.8.18/
 ./configure --prefix=/usr/local --enable-cxx
 make -j2
 make install
@@ -51,6 +56,7 @@ rm -rf hdf5-*
 # easy-install some pacakges
 easy_install mpi4py
 easy_install h5py
+easy_install networkx
 
 # Install Random123
 wget http://www.thesalmons.org/john/random123/releases/1.08/Random123-1.08.tar.gz
@@ -117,9 +123,9 @@ rm -rf lapack*
 # Install Elemental
 git clone https://github.com/elemental/Elemental.git
 cd Elemental
-git checkout 0ffa9fc29ab740a7a96eccc45c180463723f465d
+git checkout tags/v0.87.5
 mkdir build; cd build
-cmake -DEL_USE_64BIT_INTS=ON -DEL_HAVE_QUADMATH=OFF -DCMAKE_BUILD_TYPE=Release -DEL_HYBRID=ON -DBUILD_SHARED_LIBS=ON -DMATH_LIBS="-L/usr/local/lib -llapack -lopenblas -lm" ../
+cmake -DEL_USE_64BIT_INTS=ON -DEL_HAVE_QUADMATH=OFF -DCMAKE_BUILD_TYPE=Release -DEL_HYBRID=ON -DBUILD_SHARED_LIBS=ON -DINSTALL_PYTHON_PACKAGE=ON -DMATH_LIBS="-L/usr/local/lib -llapack -lopenblas -lm" ../
 make -j2
 make install
 
