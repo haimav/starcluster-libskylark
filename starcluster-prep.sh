@@ -124,7 +124,9 @@ make -j2
 make install
 
 # Now create an AMI, e.g. using the command:
-#   starcluster ebsimage i-28e4faec hvmimage
+#   starcluster ebsimage <instance-id> <imagename>
+#
+# You can use 'starcluster listclusters' to find the instance-id.
 
 # On this AMI, you should be able to compile libskylark using:
 #   git clone https://github.com/xdata-skylark/libskylark.git
