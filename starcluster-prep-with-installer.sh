@@ -32,6 +32,9 @@ yes | apt-get remove openmpi-bin openmpi-common libopenmpi1.6 libopenmpi-dev
 curl -L -O https://github.com/xdata-skylark/libskylark/releases/download/v0.20/install.sh
 bash install.sh -b -p /opt/libskylark
 
+echo "export PATH=/opt/libskylark/bin:${PATH}" >> /etc/profile
+echo "export LD_LIBRARY_PATH=/opt/libskylark/lib64:/opt/libskylark/lib:${LD_LIBRARY_PATH}" >> /etc/profile
+
 # Now create an AMI, e.g. using the command:
 #   starcluster ebsimage <instance-id> <imagename>
 #
