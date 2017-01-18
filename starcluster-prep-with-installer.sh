@@ -26,6 +26,9 @@ rm -rf starcluster-spark-skylark/
 chmod +x doall.sh
 ./doall.sh
 
+# Remove OpenMPI so we use mpich
+yes | apt-get remove openmpi-bin openmpi-common libopenmpi1.6 libopenmpi-dev
+
 curl -L -O https://github.com/xdata-skylark/libskylark/releases/download/v0.20/install.sh
 bash install.sh -b -p /opt/libskylark
 
@@ -36,4 +39,5 @@ bash install.sh -b -p /opt/libskylark
 #
 # When you launch an instance from this AMI, libskylark should be in /opt/libskylark.
 # It is useful to do:
-# export PATH=/opt/libskylark/bin:${PATH}
+#   export PATH=/opt/libskylark/bin:${PATH}
+#   export LD_LIBRARY_PATH=/opt/libskylark/lib64:/opt/libskylark/lib:${LD_LIBRARY_PATH}
