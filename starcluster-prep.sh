@@ -123,7 +123,7 @@ rm -rf lapack*
 # Install Elemental
 git clone https://github.com/elemental/Elemental.git
 cd Elemental
-git checkout tags/v0.87.5
+git checkout tags/v0.87.6
 mkdir build; cd build
 cmake -DEL_USE_64BIT_INTS=ON -DEL_HAVE_QUADMATH=OFF -DCMAKE_BUILD_TYPE=Release -DEL_HYBRID=ON -DBUILD_SHARED_LIBS=ON -DINSTALL_PYTHON_PACKAGE=ON -DMATH_LIBS="-L/usr/local/lib -llapack -lopenblas -lm" ../
 make -j2
